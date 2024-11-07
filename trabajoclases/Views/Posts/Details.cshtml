@@ -1,0 +1,102 @@
+﻿@model trabajoclases.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    /* Contenedor principal de detalles */
+.details-container {
+    width: 400px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Título principal */
+.details-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el encabezado de sección */
+.details-container h4 {
+    font-size: 20px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Estilo para la lista de detalles */
+.details-container .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.details-container .row dt {
+    font-weight: bold;
+    color: #555;
+}
+
+.details-container .row dd {
+    margin: 0;
+    color: #333;
+}
+
+/* Estilo de los botones */
+.details-container .action-buttons a {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.details-container .action-buttons a.edit {
+    background-color: #4CAF50; /* Verde para Editar */
+}
+
+.details-container .action-buttons a.back {
+    background-color: #2196F3; /* Azul para Back to List */
+}
+
+.details-container .action-buttons a:hover {
+    opacity: 0.9;
+}
+
+</style>
+
+<div class="details-container">
+    <h1>Details</h1>
+    <h4>Post</h4>
+    <hr />
+
+    <dl class="row">
+        <dt>Nombre</dt>
+        <dd>@Html.DisplayFor(model => model.Nombre)</dd>
+
+        <dt>Descripcion</dt>
+        <dd>@Html.DisplayFor(model => model.Descripcion)</dd>
+
+        <dt>Fecha</dt>
+        <dd>@Html.DisplayFor(model => model.Fecha)</dd>
+
+        <dt>Tema</dt>
+        <dd>@Html.DisplayFor(model => model.Tema)</dd>
+    </dl>
+
+    <div class="action-buttons">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="edit">Edit</a>
+        <a asp-action="Index" class="back">Back to List</a>
+    </div>
+</div>

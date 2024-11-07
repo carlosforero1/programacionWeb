@@ -1,0 +1,160 @@
+﻿@model trabajoclases.Models.Post
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+/* Estilo del contenedor del formulario */
+.post-container {
+    width: 400px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+/* Título principal */
+.post-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e53935;
+    margin-bottom: 20px;
+}
+
+/* Título secundario */
+.post-container h4 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Estilo de los campos de entrada */
+.post-container .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+    text-align: left;
+}
+
+.post-container input[type="text"],
+.post-container input[type="datetime-local"],
+.post-container select,
+.post-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+/* Estilo del botón */
+.post-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #e53935;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.post-container input[type="submit"]:hover {
+    background-color: #d32f2f;
+}
+
+/* Estilo del enlace de volver */
+.post-container a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.post-container a:hover {
+    color: #e53935;
+}
+
+/* Estilo de los mensajes de validación */
+.post-container .text-danger {
+    color: #e53935;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Estilo del icono flotante */
+.icon {
+    width: 50px;
+    height: 50px;
+    background-color: #e53935;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    color: white;
+    font-size: 24px;
+}
+
+</style>
+
+<div class="post-container">
+    <div class="icon">📝</div>
+    <h1>Crear</h1>
+    <h4>Formulario</h4>
+    <hr />
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Nombre" class="control-label"></label>
+            <input asp-for="Nombre" class="form-control" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Descripcion" class="control-label"></label>
+            <input asp-for="Descripcion" class="form-control" />
+            <span asp-validation-for="Descripcion" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Fecha" class="control-label"></label>
+            <input asp-for="Fecha" class="form-control" />
+            <span asp-validation-for="Fecha" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Tema" class="control-label"></label>
+            <select asp-for="Tema" class="form-control" asp-items="Html.GetEnumSelectList<Tema>()"></select>
+            <span asp-validation-for="Tema" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

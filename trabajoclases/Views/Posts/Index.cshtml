@@ -1,0 +1,108 @@
+﻿@model IEnumerable<trabajoclases.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    /* Estilo para los enlaces de acción en la tabla */
+    .action-buttons a {
+        padding: 5px 10px;
+        margin: 0 5px;
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+        .action-buttons a.Create {
+            background-color: #4CAF50; /* Verde para Editar */
+        }
+
+        .action-buttons a.edit {
+            background-color: #4CAF50; /* Verde para Editar */
+        }
+
+        .action-buttons a.details {
+            background-color: #2196F3; /* Azul para Detalles */
+        }
+
+        .action-buttons a.delete {
+            background-color: #f44336; /* Rojo para Eliminar */
+        }
+
+        .action-buttons a:hover {
+            opacity: 0.9;
+        }
+
+    .create-button {
+        padding: 10px 20px;
+        background-color: #e53935; /* Rojo */
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+        .create-button:hover {
+            background-color: #d32f2f; /* Rojo más oscuro al pasar el cursor */
+        }
+
+</style>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="create-button">Crear Nuevo</a>
+
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tema)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tema)
+            </td>
+                <td class="action-buttons">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="edit">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="details">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="delete">Delete</a>
+                </td>
+
+        </tr>
+}
+    </tbody>
+</table>
